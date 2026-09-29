@@ -7,17 +7,17 @@
 <style>
 :root{--navy:#071a36;--blue:#1479ff;--purple:#6842e8;--yellow:#ffd21f;--green:#19b66b;--bg:#f5f8ff;--text:#14213d;--muted:#68758b}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-header{background:var(--navy);color:#fff;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:5}
-.logo{font-weight:800;font-size:21px}.logo span{color:var(--yellow)}nav{display:flex;gap:18px;align-items:center}nav a{color:#fff;text-decoration:none;font-size:14px}
-.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:#fff}.yellow{background:var(--yellow);color:#15213b}
-.hero{background:linear-gradient(120deg,#08275c,#1746b9 55%,#6739dc);color:#fff;padding:55px 5%;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+header{background:rgba(7,26,54,.96);backdrop-filter:blur(12px);color:#fff;padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:50;box-shadow:0 4px 22px rgba(7,26,54,.12)}
+.logo{font-weight:900;font-size:21px;letter-spacing:-.3px;white-space:nowrap}.logo span{color:var(--yellow)}nav{display:flex;gap:18px;align-items:center}nav a{color:#fff;text-decoration:none;font-size:14px}
+.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(20,40,90,.14)}.primary{background:var(--blue);color:#fff}.yellow{background:var(--yellow);color:#15213b}
+.hero{background:radial-gradient(circle at 85% 20%,rgba(255,210,31,.18),transparent 28%),linear-gradient(120deg,#061a3b,#1746b9 55%,#6739dc);color:#fff;padding:55px 5%;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
 .badge{display:inline-block;background:var(--yellow);color:#17233c;padding:8px 13px;border-radius:20px;font-weight:800;font-size:13px}
 h1{font-size:48px;line-height:1.02;margin:15px 0}h1 span{color:var(--yellow)}.hero p{font-size:18px;max-width:650px;color:#e6edff}
 .search{display:flex;background:#fff;padding:6px;border-radius:15px;max-width:650px;margin:25px 0}.search input{flex:1;border:0;padding:14px;font-size:15px;outline:0}.search button{border-radius:11px}
-.hero-card{background:rgba(255,255,255,.12);padding:25px;border:1px solid rgba(255,255,255,.2);border-radius:25px;text-align:center}
+.hero-card{background:rgba(255,255,255,.12);box-shadow:0 20px 55px rgba(0,0,0,.18);padding:25px;border:1px solid rgba(255,255,255,.2);border-radius:25px;text-align:center}
 .hero-card .emoji{font-size:80px}.hero-card h3{margin:8px}
 section{padding:40px 5%;max-width:1250px;margin:auto}.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.section-title h2{margin:0;font-size:27px}.section-title p{margin:5px 0 0;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 22px rgba(20,40,90,.07);border:1px solid #e8edfa}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;max-width:650px}.mini-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:15px;padding:13px}.mini-stat strong{display:block;font-size:20px}.mini-stat span{font-size:12px;color:#dbe6ff}.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 22px rgba(20,40,90,.07);border:1px solid #e8edfa;transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,40,90,.1)}
 .cat{color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:space-between}.cat:nth-child(1){background:#6336d9}.cat:nth-child(2){background:#1479ff}.cat:nth-child(3){background:#18a964}.cat:nth-child(4){background:#f37b18}.cat:nth-child(5){background:#12a8bd}.cat:nth-child(6){background:#ef3c78}.cat:nth-child(7){background:#e6a900}.cat:nth-child(8){background:#4038b8}
 .icon{font-size:30px}.cat h3{margin:7px 0 0}.cat small{opacity:.9}
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:18px}.kids{background:linear-gradient(135deg,#e8f7ff,#fff2bc)}.products{background:linear-gradient(135deg,#eee8ff,#f9f4ff)}.feature h2{margin:0 0 8px}.feature ul{padding-left:20px;line-height:1.9}
@@ -25,14 +25,14 @@ section{padding:40px 5%;max-width:1250px;margin:auto}.section-title{display:flex
 .product{display:flex;flex-direction:column;gap:10px}.product .cover{height:125px;border-radius:12px;background:linear-gradient(135deg,#173e9d,#7446e8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;padding:10px}.price{font-weight:800;color:#16824f}
 .cta{background:linear-gradient(90deg,#126cf0,#6838db);color:#fff;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px}
 footer{background:var(--navy);color:#fff;padding:35px 5%;margin-top:20px}.foot{max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:25px}.muted{color:#b9c7df;font-size:13px}
-@media(max-width:850px){nav a{display:none}.hero{grid-template-columns:1fr;padding:40px 5%}h1{font-size:38px}.grid{grid-template-columns:repeat(2,1fr)}.feature{grid-template-columns:1fr}.cta,.foot{flex-direction:column;align-items:flex-start}}
-@media(max-width:520px){header{padding:12px 4%}.grid{grid-template-columns:1fr 1fr}.card{padding:15px}.cat{min-height:105px}.hero-card{display:none}.search{margin-bottom:15px}section{padding:30px 4%}.section-title h2{font-size:22px}}
+@media(max-width:850px){nav a{display:none}.mini-stats{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr;padding:40px 5%}h1{font-size:38px}.grid{grid-template-columns:repeat(2,1fr)}.feature{grid-template-columns:1fr}.cta,.foot{flex-direction:column;align-items:flex-start}}
+@media(max-width:520px){header{padding:12px 4%}.mini-stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr 1fr}.card{padding:15px}.cat{min-height:105px}.hero-card{display:none}.search{margin-bottom:15px}section{padding:30px 4%}.section-title h2{font-size:22px}}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">🌍 Paanwin's <span>World</span></div>
-  <nav><a href="#home">Home</a><a href="#questions">Questions</a><a href="#quizzes">Quizzes</a><a href="#products">Products</a><a href="#kids">Kids Zone</a><a href="#admin">Admin</a></nav>
+  <nav aria-label="Main navigation"><a href="#home">Home</a><a href="#questions">Questions</a><a href="#quizzes">Quizzes</a><a href="#products">Products</a><a href="#kids">Kids Zone</a><a href="#account">Account</a><a href="#admin">Admin</a></nav>
   <button class="btn yellow" onclick="openAuth()">Login / Sign Up</button>
 </header>
 
@@ -45,6 +45,7 @@ footer{background:var(--navy);color:#fff;padding:35px 5%;margin-top:20px}.foot{m
     <div class="search"><input id="searchBox" placeholder="Search for a question, topic or subject..."><button class="btn primary" onclick="searchQuestion()">Search</button></div>
     <button class="btn yellow" onclick="location.href='#kids'">👧 Explore Kids Zone</button>
     <button class="btn primary" onclick="location.href='#quizzes'">🧠 Take a Quiz</button>
+    <div class="mini-stats"><div class="mini-stat"><strong>📚 100+</strong><span>Learning topics</span></div><div class="mini-stat"><strong>🧠 4+</strong><span>Quiz categories</span></div><div class="mini-stat"><strong>🌟 Free</strong><span>To get started</span></div></div>
   </div>
   <div class="hero-card"><div class="emoji">📚✨🌎</div><h3>Better Questions. Bigger Dreams.</h3><p>Learn something new every day.</p></div>
 </section>
@@ -65,7 +66,7 @@ footer{background:var(--navy);color:#fff;padding:35px 5%;margin-top:20px}.foot{m
 
 <section id="kids">
   <div class="feature">
-    <div class="card kids"><h2>👧 Kids Zone</h2><p>Fun, simple learning for young minds.</p><ul><li>Age-appropriate questions</li><li>Math, English & science</li><li>Fun quizzes and brain games</li><li>Points, badges and progress</li></ul><button class="btn yellow" onclick="alert('Kids Zone is being built next!')">Explore Kids Zone →</button></div>
+    <div class="card kids"><h2>👧 Kids Zone</h2><p>Fun, simple learning for young minds.</p><ul><li>Age-appropriate questions</li><li>Math, English & science</li><li>Fun quizzes and brain games</li><li>Points, badges and progress</li></ul><button class="btn yellow" onclick="location.href='#quizzes'">Start Kids Learning →</button></div>
     <div class="card products"><h2>🛍️ Digital Products</h2><p>Useful learning resources for families and students.</p><ul><li>Question & answer packs</li><li>Practice tests</li><li>Workbooks and study guides</li><li>Downloadable PDFs</li></ul><button class="btn primary" onclick="location.href='#products'">Browse Products →</button></div>
   </div>
 </section>
