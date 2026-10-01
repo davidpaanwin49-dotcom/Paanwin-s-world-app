@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paanwin's World — Learn • Grow • Achieve</title>
+<style>
+:root{--navy:#07152f;--blue:#168cff;--purple:#536dfe;--yellow:#f4c95d;--green:#18b7a0;--bg:#f4f9ff;--text:#10213f;--muted:#63738f}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{background:rgba(7,26,54,.96);backdrop-filter:blur(12px);color:#fff;padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:50;box-shadow:0 4px 22px rgba(7,26,54,.12)}
+.logo{font-weight:900;font-size:21px;letter-spacing:-.3px;white-space:nowrap}.logo span{color:var(--yellow)}nav{display:flex;gap:18px;align-items:center}nav a{color:#fff;text-decoration:none;font-size:14px}
+.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(20,40,90,.14)}.primary{background:var(--blue);color:#fff}.yellow{background:var(--yellow);color:#15213b}
+.hero{background:radial-gradient(circle at 85% 20%,rgba(24,183,160,.22),transparent 28%),linear-gradient(120deg,#06152f,#1268c9 55%,#2456c7);color:#fff;padding:55px 5%;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+.badge{display:inline-block;background:var(--yellow);color:#17233c;padding:8px 13px;border-radius:20px;font-weight:800;font-size:13px}
+h1{font-size:48px;line-height:1.02;margin:15px 0}h1 span{color:var(--yellow)}.hero p{font-size:18px;max-width:650px;color:#e6edff}
+.search{display:flex;background:#fff;padding:6px;border-radius:15px;max-width:650px;margin:25px 0}.search input{flex:1;border:0;padding:14px;font-size:15px;outline:0}.search button{border-radius:11px}
+.hero-card{background:rgba(255,255,255,.12);box-shadow:0 20px 55px rgba(0,0,0,.18);padding:25px;border:1px solid rgba(255,255,255,.2);border-radius:25px;text-align:center}
+.hero-card .emoji{font-size:80px}.hero-card h3{margin:8px}
+section{padding:40px 5%;max-width:1250px;margin:auto}.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.section-title h2{margin:0;font-size:27px}.section-title p{margin:5px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;max-width:650px}.mini-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:15px;padding:13px}.mini-stat strong{display:block;font-size:20px}.mini-stat span{font-size:12px;color:#dbe6ff}.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 22px rgba(20,40,90,.07);border:1px solid #e8edfa;transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,40,90,.1)}
+.cat{color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:space-between}.cat:nth-child(1){background:#2456c7}.cat:nth-child(2){background:#168cff}.cat:nth-child(3){background:#18b7a0}.cat:nth-child(4){background:#d79f32}.cat:nth-child(5){background:#087f9a}.cat:nth-child(6){background:#536dfe}.cat:nth-child(7){background:#b98924}.cat:nth-child(8){background:#3048a8}
+.icon{font-size:30px}.cat h3{margin:7px 0 0}.cat small{opacity:.9}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:18px}.kids{background:linear-gradient(135deg,#e7f8ff,#fff8df)}.products{background:linear-gradient(135deg,#eaf0ff,#f5fbff)}.feature h2{margin:0 0 8px}.feature ul{padding-left:20px;line-height:1.9}
+.question-list .q{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid #edf0f7}.q:last-child{border-bottom:0}.q strong{display:block}.q small{color:var(--muted)}
+.product{display:flex;flex-direction:column;gap:10px}.product .cover{height:125px;border-radius:12px;background:linear-gradient(135deg,#0b4f9f,#168cff);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;text-align:center;padding:10px}.price{font-weight:800;color:#16824f}
+.cta{background:linear-gradient(90deg,#1268c9,#18b7a0);color:#fff;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+footer{background:var(--navy);color:#fff;padding:35px 5%;margin-top:20px}.foot{max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:25px}.muted{color:#b9c7df;font-size:13px}
+@media(max-width:850px){nav a{display:none}.mini-stats{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr;padding:40px 5%}h1{font-size:38px}.grid{grid-template-columns:repeat(2,1fr)}.feature{grid-template-columns:1fr}.cta,.foot{flex-direction:column;align-items:flex-start}}
+@media(max-width:520px){header{padding:12px 4%}.mini-stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr 1fr}.card{padding:15px}.cat{min-height:105px}.hero-card{display:none}.search{margin-bottom:15px}section{padding:30px 4%}.section-title h2{font-size:22px}}
+
+.protected-lock{position:relative}
+.auth-hidden{display:none!important}
+.protected-lock::after{content:"🔒 Sign up or log in to unlock";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(7,21,47,.94);color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.18);z-index:5;pointer-events:none;white-space:nowrap}
+@media(max-width:520px){.protected-lock::after{font-size:12px;white-space:normal;text-align:center;width:80%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🌍 Paanwin's <span>World</span></div>
+  <nav aria-label="Main navigation">
+<a href="#home">Home</a>
+<a href="#questions" onclick="return navProtected(event,'Questions & Answers')">Questions</a>
+<a href="#quizzes" onclick="return navProtected(event,'Quizzes')">Quizzes</a>
+<a href="#products" onclick="return navProtected(event,'Digital Products')">Products</a>
+<a href="#kids" onclick="return navProtected(event,'Kids Zone')">Kids Zone</a>
+<a href="#account" onclick="return navProtected(event,'Account')">Account</a>
+<a href="#admin">Admin</a>
+</nav>
+  <div style="display:flex;gap:8px;align-items:center"><button id="accountBtn" class="btn yellow" onclick="openAuth()">Login / Sign Up</button><button id="logoutBtn" class="btn" style="display:none;background:#fff;color:#07152f" onclick="logoutUser()">Logout</button></div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div>
+    <span class="badge">LEARN • GROW • ACHIEVE</span>
+    <h1>Welcome to Paanwin's <span>World</span> 🌍</h1>
+    <p>Questions, answers, quizzes and digital learning resources for kids, students and curious minds.</p>
+    <div class="search"><input id="searchBox" placeholder="Search for a question, topic or subject..."><button class="btn primary" onclick="openProtected('Questions & Answers', searchQuestion)">Search</button></div>
+    <button class="btn yellow" onclick="openProtected('Kids Zone',()=>location.href='#kids')">👧 Explore Kids Zone</button>
+    <button class="btn primary" onclick="openProtected('Quizzes',()=>location.href='#quizzes')">🧠 Take a Quiz</button>
+    <div class="mini-stats"><div class="mini-stat"><strong>📚 100+</strong><span>Learning topics</span></div><div class="mini-stat"><strong>🧠 4+</strong><span>Quiz categories</span></div><div class="mini-stat"><strong>🌟 Free</strong><span>To get started</span></div></div>
+  </div>
+  <div class="hero-card"><div class="emoji">📚✨🌎</div><h3>Better Questions. Bigger Dreams.</h3><p>Learn something new every day.</p></div>
+</section>
+
+<section>
+  <div class="section-title"><div><h2>Browse by Category</h2><p>Find questions and learning materials.</p></div></div>
+  <div class="grid">
+    <div class="card cat"><div class="icon">🎓</div><div><h3>WAEC / JAMB</h3><small>Exam preparation</small></div></div>
+    <div class="card cat"><div class="icon">🧮</div><div><h3>Mathematics</h3><small>Numbers & problems</small></div></div>
+    <div class="card cat"><div class="icon">📖</div><div><h3>English</h3><small>Reading & writing</small></div></div>
+    <div class="card cat"><div class="icon">🔬</div><div><h3>Science</h3><small>Explore & discover</small></div></div>
+    <div class="card cat"><div class="icon">💻</div><div><h3>Computer</h3><small>IT & technology</small></div></div>
+    <div class="card cat"><div class="icon">💼</div><div><h3>Business</h3><small>Skills & finance</small></div></div>
+    <div class="card cat"><div class="icon">💡</div><div><h3>General Knowledge</h3><small>Facts & discovery</small></div></div>
+    <div class="card cat"><div class="icon">🚀</div><div><h3>Career & Skills</h3><small>Grow your future</small></div></div>
+  </div>
+</section>
+
+<section id="kids" class="protected-lock">
+  <div class="feature">
+    <div class="card kids"><h2>👧 Kids Zone</h2><p>Fun, simple learning for young minds.</p><ul><li>Age-appropriate questions</li><li>Math, English & science</li><li>Fun quizzes and brain games</li><li>Points, badges and progress</li></ul><button class="btn yellow" onclick="openProtected('Kids Zone',()=>location.href='#quizzes')">Start Kids Learning →</button></div>
+    <div class="card products"><h2>🛍️ Digital Products</h2><p>Useful learning resources for families and students.</p><ul><li>Question & answer packs</li><li>Practice tests</li><li>Workbooks and study guides</li><li>Downloadable PDFs</li></ul><button class="btn primary" onclick="openProtected('Digital Products',()=>location.href='#products')">Browse Products →</button></div>
+  </div>
+</section>
+
+<section id="questions" class="protected-lock">
+  <div class="section-title"><div><h2>🔥 Popular Questions</h2><p>Questions learners are searching for.</p></div></div>
+  <div class="card question-list" id="questionBank">
+    <div class="q" onclick="openProtected('Questions & Answers',()=>showAnswer(0))"><div><strong>What is photosynthesis?</strong><small>Science</small></div><span>→</span></div>
+    <div class="q" onclick="openProtected('Questions & Answers',()=>showAnswer(1))"><div><strong>What is the capital of Nigeria?</strong><small>General Knowledge</small></div><span>→</span></div>
+    <div class="q" onclick="openProtected('Questions & Answers',()=>showAnswer(2))"><div><strong>How do you calculate percentage?</strong><small>Mathematics</small></div><span>→</span></div>
+    <div class="q" onclick="openProtected('Questions & Answers',()=>showAnswer(3))"><div><strong>What is HTML?</strong><small>Computer</small></div><span>→</span></div>
+  </div>
+  <div id="answerBox" class="card" style="display:none;margin-top:15px;background:#eef7ff"></div>
+</section>
+
+<section id="quizzes" class="protected-lock">
+  <div class="section-title"><div><h2>🧠 Take a Quiz</h2><p>Test your knowledge and track your progress.</p></div></div>
+  <div class="grid">
+    <div class="card"><h3>💡 General Knowledge</h3><p>10 questions</p><button class="btn primary" onclick="openProtected(\'Quizzes\',()=>startQuiz(\'General Knowledge\'))">Start Quiz</button></div>
+    <div class="card"><h3>🧮 Mathematics</h3><p>10 questions</p><button class="btn primary" onclick="openProtected(\'Quizzes\',()=>startQuiz(\'Mathematics\'))">Start Quiz</button></div>
+    <div class="card"><h3>🔬 Science</h3><p>10 questions</p><button class="btn primary" onclick="openProtected(\'Quizzes\',()=>startQuiz(\'Science\'))">Start Quiz</button></div>
+    <div class="card"><h3>📖 English</h3><p>10 questions</p><button class="btn primary" onclick="openProtected(\'Quizzes\',()=>startQuiz(\'English\'))">Start Quiz</button></div>
+  </div>
+</section>
+
+<section id="products" class="protected-lock">
+  <div class="section-title"><div><h2>⭐ Featured Digital Products</h2><p>Downloadable learning materials.</p></div></div>
+  <div class="grid">
+    <div class="card product"><div class="cover">WAEC<br>MATHEMATICS<br>Q&A PACK</div><strong>WAEC Mathematics Q&A Pack</strong><span class="price">₦2,000</span><button class="btn primary" onclick="openProtected(\'Digital Products\',()=>buy(\'WAEC Mathematics Q&A Pack\'))">Buy Now</button></div>
+    <div class="card product"><div class="cover">GENERAL<br>KNOWLEDGE<br>Q&A</div><strong>1000 General Knowledge Questions</strong><span class="price">₦1,500</span><button class="btn primary" onclick="openProtected(\'Digital Products\',()=>buy(\'1000 General Knowledge Questions\'))">Buy Now</button></div>
+    <div class="card product"><div class="cover">KIDS<br>FUN LEARNING<br>WORKBOOK</div><strong>Kids Fun Learning Workbook</strong><span class="price">₦1,000</span><button class="btn primary" onclick="openProtected(\'Digital Products\',()=>buy(\'Kids Fun Learning Workbook\'))">Buy Now</button></div>
+    <div class="card product"><div class="cover">JAMB<br>PAST QUESTIONS<br>& ANSWERS</div><strong>JAMB Past Questions Pack</strong><span class="price">₦2,500</span><button class="btn primary" onclick="openProtected(\'Digital Products\',()=>buy(\'JAMB Past Questions Pack\'))">Buy Now</button></div>
+  </div>
+</section>
+
+
+
+<section id="account" class="protected-lock">
+  <div class="section-title">
+    <div><h2>👤 My Account</h2><p>Choose the dashboard that matches your learning journey.</p></div>
+  </div>
+  <div class="feature">
+    <div class="card">
+      <h2>🎓 Student Dashboard</h2>
+      <p>Continue learning, take quizzes and keep track of your progress.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:15px">
+        <div class="card"><strong>📝 12</strong><br><small>Quizzes completed</small></div>
+        <div class="card"><strong>⭐ 340</strong><br><small>Learning points</small></div>
+      </div>
+      <button class="btn primary" onclick="openProtected('Student Dashboard',()=>openDashboard('student'))">Open Student Dashboard</button>
+    </div>
+    <div class="card">
+      <h2>👨‍👩‍👧 Parent / Guardian</h2>
+      <p>Monitor learning progress and manage purchases for younger learners.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:15px">
+        <div class="card"><strong>📈 Progress</strong><br><small>View learning activity</small></div>
+        <div class="card"><strong>🛍️ Purchases</strong><br><small>Manage learning materials</small></div>
+      </div>
+      <button class="btn primary" onclick="openProtected('Parent Dashboard',()=>openDashboard('parent'))">Open Parent Dashboard</button>
+    </div>
+  </div>
+</section>
+
+<div id="authModal" style="display:none;position:fixed;inset:0;background:rgba(4,15,35,.78);z-index:30;padding:20px;overflow:auto">
+  <div class="card" style="max-width:460px;margin:7vh auto;padding:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 id="authTitle">Welcome Back</h2><button class="btn" onclick="closeAuth()">✕</button></div>
+    <p id="authSub" style="color:#68758b">Login to continue learning.</p>
+    <input id="authName" placeholder="Full name (for sign up)" style="display:none;width:100%;padding:13px;margin:7px 0;border:1px solid #dce3f1;border-radius:10px">
+    <input id="authEmail" type="email" placeholder="Email address" style="width:100%;padding:13px;margin:7px 0;border:1px solid #dce3f1;border-radius:10px">
+    <input id="authPassword" type="password" placeholder="Password" style="width:100%;padding:13px;margin:7px 0;border:1px solid #dce3f1;border-radius:10px">
+    <select id="authRole" style="width:100%;padding:13px;margin:7px 0;border:1px solid #dce3f1;border-radius:10px">
+      <option>Student</option><option>Parent / Guardian</option>
+    </select>
+    <button class="btn primary" style="width:100%;margin-top:8px" onclick="submitAuth()">Continue</button>
+    <p style="text-align:center;margin-top:16px"><a href="#" onclick="toggleAuth(event)" id="authToggle">Create an account</a></p>
+    <div id="authMessage" style="text-align:center;font-weight:700;color:#16824f"></div>
+  </div>
+</div>
+
+<div id="dashboardModal" style="display:none;position:fixed;inset:0;background:rgba(4,15,35,.78);z-index:30;padding:20px;overflow:auto">
+  <div class="card" style="max-width:760px;margin:5vh auto;padding:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2 id="dashTitle"></h2><div style="display:flex;gap:8px"><button class="btn" style="background:#fff1f1;color:#a52a2a" onclick="logoutUser()">Logout</button><button class="btn" onclick="closeDashboard()">✕</button></div></div>
+    <div id="dashContent"></div>
+  </div>
+</div>
+
+<section id="admin" style="display:none">
+  <div class="section-title">
+    <div><h2>⚙️ Admin Dashboard</h2><p>Your control center for Paanwin's World.</p></div>
+    <span class="badge">OWNER AREA</span>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="icon">❓</div><h3 id="adminQuestions">4</h3><p>Sample Questions</p><button class="btn primary" onclick="adminAction('questions')">Manage Questions</button></div>
+    <div class="card"><div class="icon">🧠</div><h3>4</h3><p>Quiz Categories</p><button class="btn primary" onclick="adminAction('quizzes')">Manage Quizzes</button></div>
+    <div class="card"><div class="icon">🛍️</div><h3 id="adminProducts">4</h3><p>Digital Products</p><button class="btn primary" onclick="adminAction('products')">Manage Products</button></div>
+    <div class="card"><div class="icon">👥</div><h3 id="adminUsers">0</h3><p>Registered Users</p><button class="btn primary" onclick="adminAction('users')">Manage Users</button></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h3>➕ Add a Question</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <input id="newQuestion" placeholder="Question" style="padding:13px;border:1px solid #dce3f1;border-radius:10px">
+      <input id="newAnswer" placeholder="Correct answer" style="padding:13px;border:1px solid #dce3f1;border-radius:10px">
+    </div>
+    <textarea id="newExplanation" placeholder="Explanation" style="width:100%;margin-top:10px;padding:13px;border:1px solid #dce3f1;border-radius:10px;min-height:80px"></textarea>
+    <button class="btn primary" style="margin-top:10px" onclick="addQuestion()">Save Question</button>
+    <div id="adminMessage" style="margin-top:12px;color:#16824f;font-weight:700"></div>
+  </div>
+</section>
+<section>
+  <div class="cta"><div><h2>🌟 Join Paanwin's World</h2><p>Learn, practice and discover something new every day.</p></div><button class="btn yellow" onclick="openAuth();toggleAuthToSignup()">Create Account →</button></div>
+</section>
+</main>
+
+
+<div id="quizModal" style="display:none;position:fixed;inset:0;background:rgba(4,15,35,.75);z-index:20;padding:20px;overflow:auto">
+  <div class="card" style="max-width:650px;margin:7vh auto;padding:28px">
+    <div style="display:flex;justify-content:space-between;gap:15px"><h2 id="quizTitle">Quiz</h2><button class="btn" onclick="closeQuiz()">✕</button></div>
+    <p id="quizProgress" style="color:#68758b"></p>
+    <h3 id="quizQuestion"></h3>
+    <div id="quizOptions"></div>
+    <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center">
+      <strong id="quizScore">Score: 0</strong>
+      <button class="btn primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+</div>
+<footer><div class="foot"><div><div class="logo">🌍 Paanwin's <span>World</span></div><p class="muted">Questions. Answers. Knowledge. Everything in one world.</p></div><div><strong>Quick Links</strong><p class="muted">Questions · Quizzes · Products · Kids Zone</p></div><div><strong>Support</strong><p class="muted">Help Center · Contact · Privacy</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://borcdhsbviszwpgtzoue.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_XhEMJ5Wf0MeOTKCnCnWnOQ_4OP_Y8iw";
+const paanwinDB = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const demoQuestions=[
+ {q:"What is photosynthesis?",cat:"Science",a:"Photosynthesis is the process plants use to make food from light energy, water and carbon dioxide.",correct:"Plants make food using light energy."},
+ {q:"What is the capital of Nigeria?",cat:"General Knowledge",a:"Abuja is the capital city of Nigeria.",correct:"Abuja"},
+ {q:"How do you calculate percentage?",cat:"Mathematics",a:"Percentage means a part out of 100. For example, 25% of 200 is 50.",correct:"Multiply the number by the percentage divided by 100."},
+ {q:"What is HTML?",cat:"Computer",a:"HTML stands for HyperText Markup Language. It is used to structure content on web pages.",correct:"HyperText Markup Language"}
+];
+let questions=[...demoQuestions];
+let categoryMap={};
+
+function renderQuestions(list){
+ const bank=document.getElementById('questionBank');
+ bank.innerHTML='';
+ if(!list.length){bank.innerHTML='<div class="q"><div><strong>No questions found.</strong><small>Try another topic.</small></div></div>';return;}
+ list.slice(0,12).forEach((x,i)=>{
+  const row=document.createElement('div'); row.className='q'; row.style.cursor='pointer';
+  row.innerHTML='<div><strong></strong><small></small></div><span>→</span>';
+  row.querySelector('strong').textContent=x.q;
+  row.querySelector('small').textContent=x.cat+(x.difficulty?' • '+x.difficulty:'');
+  row.onclick=()=>showAnswer(i); bank.appendChild(row);
+ });
+}
+
+async function showAnswer(i){
+ const x=questions[i], box=document.getElementById('answerBox');
+ if(!x)return;
+ box.style.display='block'; box.innerHTML='';
+ const h=document.createElement('h3'); h.textContent='✅ Answer';
+ const p1=document.createElement('p'), strong=document.createElement('strong'); strong.textContent=x.correct; p1.appendChild(strong);
+ const p2=document.createElement('p'); p2.textContent=x.a;
+ const save=document.createElement('button'); save.className='btn primary'; save.style.marginTop='8px'; save.textContent='🔖 Save Question';
+ save.onclick=()=>saveQuestion(x.id);
+ box.append(h,p1,p2,save);
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
+ try{
+   const {data}=await paanwinDB.auth.getSession();
+   if(data.session && x.id){
+     await paanwinDB.from('student_progress').upsert({user_id:data.session.user.id,question_id:x.id,updated_at:new Date().toISOString()});
+   }
+ }catch(err){console.warn('Progress save skipped:',err.message);}
+}
+
+function setDBStatus(connected,message){
+ let el=document.getElementById('paanwinDBStatus');
+ if(!el){
+  el=document.createElement('div'); el.id='paanwinDBStatus';
+  el.style.cssText='margin:0 0 14px;font-size:13px;padding:10px 12px;border-radius:10px;background:#fff;';
+  document.getElementById('questions').prepend(el);
+ }
+ el.textContent=connected?'🟢 Connected to Paanwin’s World database — live questions are loaded.':'🔴 Database connection problem: '+(message||'Unknown error');
+ el.style.color=connected?'#168a45':'#a52a2a';
+}
+
+async function loadQuestions(){
+ const bank=document.getElementById('questionBank');
+ bank.innerHTML='<div class="q"><div><strong>Loading questions…</strong><small>Connecting to Paanwin’s World database</small></div><span>↻</span></div>';
+ try{
+  const [qres,cres]=await Promise.all([
+   paanwinDB.from('questions').select('id,question,answer,explanation,difficulty,category_id,created_at').eq('published',true).order('created_at',{ascending:false}),
+   paanwinDB.from('categories').select('id,name')
+  ]);
+  if(qres.error) throw qres.error;
+  if(cres.error) throw cres.error;
+  categoryMap=Object.fromEntries((cres.data||[]).map(c=>[c.id,c.name]));
+  questions=(qres.data||[]).map(r=>({id:r.id,q:r.question,cat:categoryMap[r.category_id]||'General',a:r.explanation||'No explanation has been added yet.',correct:r.answer,difficulty:r.difficulty}));
+  renderQuestions(questions);
+  setDBStatus(true);
+ }catch(err){
+  console.error('Paanwin database error:',err);
+  questions=[...demoQuestions];
+  renderQuestions(questions);
+  setDBStatus(false,err.message);
+ }
+}
+
+
+async function requireLogin(featureName){
+  try{
+    const {data} = await paanwinDB.auth.getSession();
+    if(data.session) return true;
+  }catch(err){
+    console.warn('Login check:', err.message);
+  }
+  openAuth();
+  document.getElementById('authSub').textContent =
+    'Please sign up or log in to access ' + (featureName || 'this feature') + '.';
+  return false;
+}
+
+
+async function navProtected(event, featureName){
+  event.preventDefault();
+  const allowed = await requireLogin(featureName);
+  if(allowed) location.hash = event.currentTarget.getAttribute('href').replace('#','');
+  return false;
+}
+
+async function openProtected(featureName, action){
+  const allowed = await requireLogin(featureName);
+  if(!allowed) return;
+  if(typeof action === 'function') action();
+}
+
+async function searchQuestion(){
+ const term=document.getElementById('searchBox').value.trim();
+ if(!term){alert('Type a question or topic first.');return;}
+ try{
+  let {data,error}=await paanwinDB.from('questions').select('id,question,answer,explanation,difficulty,category_id').eq('published',true).ilike('question','%'+term+'%').limit(30);
+  if(error) throw error;
+  if(!data || !data.length){
+   const second=await paanwinDB.from('questions').select('id,question,answer,explanation,difficulty,category_id').eq('published',true).ilike('answer','%'+term+'%').limit(30);
+   if(second.error) throw second.error;
+   data=second.data||[];
+  }
+  questions=(data||[]).map(r=>({id:r.id,q:r.question,cat:categoryMap[r.category_id]||'General',a:r.explanation||'No explanation has been added yet.',correct:r.answer,difficulty:r.difficulty}));
+  renderQuestions(questions);
+  document.getElementById('questions').scrollIntoView({behavior:'smooth'});
+  if(questions.length) showAnswer(0); else alert('No matching question yet.');
+ }catch(err){
+  console.error('Search error:',err);
+  const q=term.toLowerCase();
+  const found=demoQuestions.filter(x=>x.q.toLowerCase().includes(q)||x.cat.toLowerCase().includes(q)||x.a.toLowerCase().includes(q));
+  questions=found;
+  renderQuestions(questions);
+  document.getElementById('questions').scrollIntoView({behavior:'smooth'});
+  if(questions.length) showAnswer(0); else alert('The database search could not be completed. Please check the connection.');
+ }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ const input=document.getElementById('searchBox');
+ if(input) input.addEventListener('keydown',e=>{if(e.key==='Enter')searchQuestion();});
+});
+
+const quizSets={
+"General Knowledge":[
+ ["Which planet is known as the Red Planet?",["Earth","Mars","Jupiter","Venus"],1],
+ ["How many days are in a week?",["5","6","7","8"],2],
+ ["Which ocean is the largest?",["Atlantic","Indian","Pacific","Arctic"],2]
+],
+"Mathematics":[
+ ["What is 25% of 200?",["25","40","50","75"],2],
+ ["What is 9 × 7?",["54","63","72","81"],1],
+ ["What is 100 ÷ 4?",["20","25","40","50"],1]
+],
+"Science":[
+ ["Which gas do humans need to breathe?",["Oxygen","Helium","Hydrogen","Neon"],0],
+ ["Which organ pumps blood?",["Lung","Brain","Heart","Kidney"],2],
+ ["Water freezes at what temperature?",["0°C","10°C","50°C","100°C"],0]
+],
+"English":[
+ ["Which word is a noun?",["Quickly","Beautiful","Teacher","Run"],2],
+ ["What is the opposite of 'hot'?",["Warm","Cold","Fast","Dry"],1],
+ ["Which is a punctuation mark?",["Apple","Comma","Table","River"],1]
+]
+};
+
+let currentQuiz=[],current=0,score=0,selected=false,currentQuizName='';
+function startQuiz(name){
+ currentQuiz=quizSets[name];currentQuizName=name;current=0;score=0;selected=false;
+ document.getElementById('quizTitle').textContent=name+' Quiz';
+ document.getElementById('quizModal').style.display='block';
+ document.getElementById('nextBtn').onclick=nextQuestion;
+ renderQuestion();
+}
+function renderQuestion(){
+ selected=false;
+ const item=currentQuiz[current];
+ document.getElementById('quizProgress').textContent='Question '+(current+1)+' of '+currentQuiz.length;
+ document.getElementById('quizQuestion').textContent=item[0];
+ document.getElementById('quizScore').textContent='Score: '+score;
+ document.getElementById('nextBtn').textContent=current===currentQuiz.length-1?'Finish':'Next →';
+ const box=document.getElementById('quizOptions');box.innerHTML='';
+ item[1].forEach((option,i)=>{
+   const b=document.createElement('button');b.className='btn';b.style='display:block;width:100%;text-align:left;margin:9px 0;background:#f2f5fb';
+   b.textContent=String.fromCharCode(65+i)+'. '+option;
+   b.onclick=()=>chooseAnswer(i,b);
+   box.appendChild(b);
+ });
+}
+function chooseAnswer(i,btn){
+ if(selected)return;selected=true;
+ const correct=currentQuiz[current][2];
+ if(i===correct){score++;btn.style.background='#c9f4dd';btn.textContent+='  ✓ Correct';}
+ else {btn.style.background='#ffd9df';btn.textContent+='  ✕';}
+ document.getElementById('quizScore').textContent='Score: '+score;
+}
+async function nextQuestion(){
+ if(!selected){alert('Choose an answer first.');return;}
+ if(current<currentQuiz.length-1){current++;renderQuestion();}
+ else{
+   document.getElementById('quizQuestion').textContent='🎉 Quiz complete!';
+   document.getElementById('quizProgress').textContent='Your result';
+   document.getElementById('quizOptions').innerHTML='<div style="font-size:28px;font-weight:800;text-align:center;padding:25px">You scored '+score+' / '+currentQuiz.length+'</div>';
+   document.getElementById('nextBtn').textContent='Close';
+   document.getElementById('nextBtn').onclick=closeQuiz;
+   await recordQuizResult();
+ }
+}
+async function recordQuizResult(){
+ try{
+   const {data}=await paanwinDB.auth.getSession();
+   if(!data.session)return;
+   const user=data.session.user;
+   const {error}=await paanwinDB.from('student_quiz_results').insert({user_id:user.id,quiz_name:currentQuizName,score:score,total_questions:currentQuiz.length});
+   if(error)throw error;
+   await loadStudentDashboardStats();
+ }catch(err){console.warn('Quiz result was not saved:',err.message);}
+}
+function closeQuiz(){document.getElementById('quizModal').style.display='none';}
+async function saveQuestion(questionId){
+ if(!questionId){alert('This question cannot be saved yet.');return;}
+ try{
+   const {data}=await paanwinDB.auth.getSession();
+   if(!data.session){openAuth();return;}
+   const {error}=await paanwinDB.from('student_saved_questions').upsert({user_id:data.session.user.id,question_id:questionId});
+   if(error)throw error;
+   alert('🔖 Question saved to your dashboard.');
+   loadStudentDashboardStats();
+ }catch(err){alert('Could not save this question yet. '+err.message);}
+}
+async function buy(name){alert('Checkout for '+name+' will be connected to payment processing in the next stage.');}
+
+async function adminAction(type){
+ const names={questions:'Questions',quizzes:'Quizzes',products:'Digital Products',users:'Users'};
+ if(type==='questions'){document.getElementById('newQuestion').focus();return;}
+ if(type==='users'){
+   try{
+     const {count,error}=await paanwinDB.from('profiles').select('id',{count:'exact',head:true});
+     if(error) throw error;
+     document.getElementById('adminUsers').textContent=count||0;
+     alert('Registered users: '+(count||0));
+   }catch(err){alert('Could not load users: '+err.message);}
+   return;
+ }
+ alert(names[type]+' management is ready for the next database module.');
+}
+async function addQuestion(){
+ const q=document.getElementById('newQuestion').value.trim();
+ const a=document.getElementById('newAnswer').value.trim();
+ const e=document.getElementById('newExplanation').value.trim();
+ const msg=document.getElementById('adminMessage');
+ if(!q||!a){msg.style.color='#a52a2a';msg.textContent='Please enter the question and correct answer.';return;}
+ msg.style.color='#16824f';msg.textContent='Saving question…';
+ try{
+   const {data:sessionData}=await paanwinDB.auth.getSession();
+   if(!sessionData.session) throw new Error('Please log in as an administrator first.');
+   const {data:profile,error:profileError}=await paanwinDB.from('profiles').select('role').eq('id',sessionData.session.user.id).maybeSingle();
+   if(profileError) throw profileError;
+   if(profile?.role!=='admin') throw new Error('Administrator access is required.');
+   const {data,error}=await paanwinDB.from('questions').insert({question:q,answer:a,explanation:e||null,published:true}).select('id,question,answer,explanation').single();
+   if(error) throw error;
+   questions.unshift({id:data.id,q:data.question,cat:'General',a:data.explanation||'No explanation has been added yet.',correct:data.answer});
+   renderQuestions(questions);
+   document.getElementById('adminQuestions').textContent=questions.length;
+   msg.textContent='✅ Question saved to the live database.';
+   document.getElementById('newQuestion').value='';
+   document.getElementById('newAnswer').value='';
+   document.getElementById('newExplanation').value='';
+ }catch(err){msg.style.color='#a52a2a';msg.textContent='❌ '+err.message;}
+}
+
+let authMode='login';
+function openAuth(){document.getElementById('authModal').style.display='block';}
+function closeAuth(){document.getElementById('authModal').style.display='none';}
+function toggleAuth(e){
+ e.preventDefault(); authMode=authMode==='login'?'signup':'login';
+ document.getElementById('authTitle').textContent=authMode==='login'?'Welcome Back':'Create Your Account';
+ document.getElementById('authSub').textContent=authMode==='login'?'Login to continue learning.':'Create an account to save progress and quizzes.';
+ document.getElementById('authName').style.display=authMode==='signup'?'block':'none';
+ document.getElementById('authToggle').textContent=authMode==='login'?'Create an account':'Already have an account? Login';
+}
+async function submitAuth(){
+ const email=document.getElementById('authEmail').value.trim();
+ const pass=document.getElementById('authPassword').value;
+ const name=document.getElementById('authName').value.trim();
+ const role=document.getElementById('authRole').value;
+ const msg=document.getElementById('authMessage');
+ if(!email||!pass){msg.style.color='#a52a2a';msg.textContent='Please enter your email and password.';return;}
+ if(pass.length < 6){msg.style.color='#a52a2a';msg.textContent='Password must be at least 6 characters.';return;}
+ msg.style.color='#16824f';
+ msg.textContent='Connecting to your account…';
+ try{
+   if(authMode==='signup'){
+     const {data,error}=await paanwinDB.auth.signUp({
+       email,
+       password:pass,
+       options:{data:{full_name:name,role:role}}
+     });
+     if(error) throw error;
+     if(data.session){
+       msg.textContent='✅ Account created!';
+       setTimeout(()=>{closeAuth();updateFeatureLocks();loadQuestions();openDashboard(role.toLowerCase().includes('parent')?'parent':'student');},500);
+     }else{
+       msg.textContent='✅ Account created. Check your email to confirm your account, then log in.';
+     }
+   }else{
+     const {data,error}=await paanwinDB.auth.signInWithPassword({email,password:pass});
+     if(error) throw error;
+     const savedRole=data.user?.user_metadata?.role || 'Student';
+     msg.textContent='✅ Login successful.';
+     setTimeout(()=>{closeAuth();updateFeatureLocks();loadQuestions();openDashboard(savedRole.toLowerCase().includes('parent')?'parent':'student');},400);
+   }
+ }catch(err){
+   console.error('Auth error:',err);
+   msg.style.color='#a52a2a';
+   msg.textContent='❌ '+(err.message || 'Account action failed.');
+ }
+}
+
+
+async function updateFeatureLocks(){
+  try{
+    const {data} = await paanwinDB.auth.getSession();
+    const loggedIn=!!data.session;
+    document.querySelectorAll('#kids,#questions,#quizzes,#products,#account').forEach(el=>{
+      el.classList.toggle('auth-hidden', !loggedIn);
+      el.classList.toggle('protected-lock', !loggedIn);
+    });
+    const accountBtn=document.getElementById('accountBtn');
+    const logoutBtn=document.getElementById('logoutBtn');
+    if(accountBtn) accountBtn.style.display=loggedIn?'inline-block':'inline-block';
+    if(logoutBtn) logoutBtn.style.display=loggedIn?'inline-block':'none';
+    if(accountBtn){
+      accountBtn.textContent=loggedIn?'My Account':'Login / Sign Up';
+      accountBtn.onclick=loggedIn
+        ? ()=>openDashboard((data.session.user.user_metadata?.role||'Student').toLowerCase().includes('parent')?'parent':'student')
+        : openAuth;
+    }
+    const adminSection=document.getElementById('admin');
+    const adminNav=[...document.querySelectorAll('nav a')].find(a=>a.getAttribute('href')==='#admin');
+    if(!loggedIn){
+      if(adminSection) adminSection.style.display='none';
+      if(adminNav) adminNav.style.display='none';
+    }
+  }catch(err){console.warn('Feature lock update:',err.message);}
+}
+
+async function logoutUser(){
+  try{
+    closeDashboard();
+    closeAuth();
+    const {error}=await paanwinDB.auth.signOut();
+    if(error) throw error;
+    questions=[];
+    const bank=document.getElementById('questionBank');
+    if(bank) bank.innerHTML='<div class="q"><div><strong>🔒 Sign up or log in to view questions.</strong><small>Create an account to start learning.</small></div><span>→</span></div>';
+    const answer=document.getElementById('answerBox');
+    if(answer) answer.style.display='none';
+    await updateFeatureLocks();
+    await loadAdminAccess();
+    window.scrollTo({top:0,behavior:'smooth'});
+    alert('You have been logged out successfully.');
+  }catch(err){
+    console.error('Logout error:',err);
+    alert('Could not log out. Please try again.');
+  }
+}
+
+async function restoreAuth(){
+ try{
+   const {data}=await paanwinDB.auth.getSession();
+   await updateFeatureLocks();
+   if(data.session){
+     await loadQuestions();
+     await loadAdminAccess();
+   }
+ }catch(err){console.error('Session restore error:',err);}
+}
+
+document.addEventListener('DOMContentLoaded',async()=>{await restoreAuth();});
+paanwinDB.auth.onAuthStateChange(async (event, session)=>{
+  if(event==='SIGNED_IN' || event==='TOKEN_REFRESHED'){ await updateFeatureLocks(); await loadQuestions(); await loadAdminAccess(); }
+  if(event==='SIGNED_OUT'){ await updateFeatureLocks(); await loadAdminAccess(); }
+});
+function toggleAuthToSignup(){
+ if(authMode!=='signup') toggleAuth({preventDefault:()=>{}});
+}
+
+async function loadAdminAccess(){
+ try{
+   const {data}=await paanwinDB.auth.getSession();
+   const section=document.getElementById('admin');
+   const nav=[...document.querySelectorAll('nav a')].find(a=>a.getAttribute('href')==='#admin');
+   if(!data.session){section.style.display='none'; if(nav)nav.style.display='none'; return;}
+   const {data:profile}=await paanwinDB.from('profiles').select('role').eq('id',data.session.user.id).maybeSingle();
+   const isAdmin=profile?.role==='admin';
+   section.style.display=isAdmin?'block':'none';
+   if(nav)nav.style.display=isAdmin?'inline':'none';
+   if(isAdmin){
+     document.getElementById('adminQuestions').textContent=questions.length;
+     const {count}=await paanwinDB.from('profiles').select('id',{count:'exact',head:true});
+     document.getElementById('adminUsers').textContent=count||0;
+   }
+ }catch(err){console.warn('Admin access check:',err.message);}
+}
+
+async function loadStudentDashboardStats(){
+ const title=document.getElementById('dashTitle'), box=document.getElementById('dashContent');
+ try{
+   const {data:sessionData}=await paanwinDB.auth.getSession();
+   const user=sessionData.session?.user;
+   if(!user)return;
+   const [profileRes,resultsRes,savedRes,progressRes]=await Promise.all([
+     paanwinDB.from('profiles').select('full_name,learning_points,badges_count').eq('id',user.id).maybeSingle(),
+     paanwinDB.from('student_quiz_results').select('score,total_questions,completed_at,quiz_name').eq('user_id',user.id).order('completed_at',{ascending:false}),
+     paanwinDB.from('student_saved_questions').select('question_id',{count:'exact',head:true}).eq('user_id',user.id),
+     paanwinDB.from('student_progress').select('question_id,updated_at').eq('user_id',user.id).maybeSingle()
+   ]);
+   if(profileRes.error)throw profileRes.error;
+   if(resultsRes.error)throw resultsRes.error;
+   if(savedRes.error)throw savedRes.error;
+   if(progressRes.error)throw progressRes.error;
+   const results=resultsRes.data||[];
+   const completed=results.length;
+   const total=results.reduce((sum,r)=>sum+(Number(r.total_questions)||0),0);
+   const correct=results.reduce((sum,r)=>sum+(Number(r.score)||0),0);
+   const average=total?Math.round(correct/total*100):0;
+   const points=profileRes.data?.learning_points ?? correct*10;
+   const badges=profileRes.data?.badges_count ?? Math.floor(completed/3);
+   const saved=savedRes.count||0;
+   const progressText=progressRes.data?.question_id?'Continue from your last studied question.':'Start your first question.';
+   title.textContent='🎓 Student Dashboard';
+   box.innerHTML='<div class="grid">'+
+     '<div class="card"><h3>📚 Continue Learning</h3><p>'+progressText+'</p><button class="btn primary" onclick="closeDashboard();location.href=\'#questions\'">Study Questions</button></div>'+
+     '<div class="card"><h3>🧠 Quiz Progress</h3><p>'+completed+' quizzes completed.</p><strong>'+average+'% average</strong></div>'+
+     '<div class="card"><h3>🏆 Achievements</h3><p>'+points+' learning points.</p><strong>'+badges+' badges</strong></div>'+
+     '<div class="card"><h3>🔖 Saved</h3><p>'+saved+' saved questions.</p><button class="btn primary" onclick="closeDashboard();location.href=\'#questions\'">View Saved</button></div>'+
+     '</div>';
+ }catch(err){
+   console.warn('Dashboard data error:',err.message);
+   title.textContent='🎓 Student Dashboard';
+   box.innerHTML='<div class="card"><h3>Connecting your dashboard…</h3><p>'+err.message+'</p><button class="btn primary" onclick="loadStudentDashboardStats()">Try Again</button></div>';
+ }
+}
+async function openDashboard(type){
+ document.getElementById('dashboardModal').style.display='block';
+ const title=document.getElementById('dashTitle'), box=document.getElementById('dashContent');
+ if(type==='parent'){
+  title.textContent='👨‍👩‍👧 Parent / Guardian Dashboard';
+  box.innerHTML='<div class="grid"><div class="card"><h3>📈 Learning Progress</h3><p>Your child\'s learning data will appear here.</p></div><div class="card"><h3>⭐ Achievements</h3><p>Badges and points will appear here.</p></div><div class="card"><h3>🛍️ Purchases</h3><p>Learning product purchases will appear here.</p></div><div class="card"><h3>🔒 Parent Controls</h3><p>Parent controls will be connected next.</p></div></div>';
+ } else {
+  box.innerHTML='<div class="card"><h3>Loading your real progress…</h3><p>Please wait.</p></div>';
+  await loadStudentDashboardStats();
+ }
+}
+function closeDashboard(){document.getElementById('dashboardModal').style.display='none';}
+</script>
+</body>
+</html>
